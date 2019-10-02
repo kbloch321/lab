@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Rozponawanie</title>
+<link rel="Stylesheet" href="style.css">
+</head>
+
+<body>
+<h1>Rozponawanie gestów myszy</h1>
+
+
+<h2> Myszka</h2>
+
+<p>Podstawowym wskaznikiem uzywanym w komputerach jest myszka. W dzisiejszych czasach najpopularniejsze są myszki optyczne. Składają się one z emitera światła np. diody, oraz detektora światła, np. fotodiody lub sensora obrazu. Dzięki temu można rozpoznac ruch myszki po powierzchni najczęściej nieprzezroczystej, ale istnieją zaawansowane modele, które potrafią rozpoznać ruch także na przeroczystej powierzchni.<br />
+ Reprezentuje ona grupę urządzeń o dużej dokładności, takie jak ekran dotykowy, różnego rodzaju urządzenia wskazujące (myszka, rysik). Są one punktem referencyjnym do jakości rozpoznawania gestów pochodzących z innych żródeł.
+
+</p>
+
+
+<h2>Algorytmy rozpoznawania gestów
+</h2>
+
+<p>W pracy są opisane i porównane dwa różne podejścia do rozpoznawania gestów. Jedno polega na zrzutowaniu gestu na bitmapę czyli rozpoznawanie kształtu.  Drugie podejście polega na rozpoznawaniu gestów, jako kolejnych przemieszczeń przy użyciu ukrytych modeli Markowa.</p>
+
+
+
+<h2> Rozpoznawanie kształtu</h2>
+
+<p>Każdy wykonywany gest za pomocą myszki, czy innego sensora jak np. Kinect jest
+ruchem dyskretnym. Oznacza to, że składa on się z kolejnych punktów w przestrzeni,
+które tworzą ciąg. Traktując każdy z nich, jako wierzchołek krzywej zamkniętej możemy
+pogrupowac gesty w klasy, a następnie wyuczyc algorytmy klasyfikujące rozpoznawania ich.</p>
+<p>
+
+<h3>Grupowanie gestów</h3>
+<p>Aby zgrupowac gesty należy najpierw opisac je pewnymi współczynnikami na podstawie których będzie można zbadać podobieństwo (lub różnicę) pomiędzy nimi. Istnieje
+wiele możliwości, jak na przykład współczynniki kształtu czy niezmienniki momentowe.Na potrzeby tej pracy zostały wybrane te drugie.</p>
+<p>Przed ich użyciem
+należy najpierw odpowiednio przygotowac gest, ponieważ są one przystosowane do pracy
+na obrazach a gest do takowych nie należy. Odbywa się to w następujących krokach:</p>
+<p>
+1. Tworzona jest bitmapa o rozmiarach n × n pikseli, gdzie n jest także wartością badaną, ponieważ od wielkości obrazu zależy dokaadność wyliczenia niezmienników momentowych.</p>
+<p>
+2. Rzutowane są poszczególne punkty tworzące gest na utworzoną bitmapę odpowiednio przeskalowując rozmiar gestu tak, aby zajął jak największą przestrzeń na obrazie.</p>
+<p>
+3. Punkty są łączone w krzywą zamkniętą zgodnie z ich kolejnością - ostatni punkt jest łączony z pierwszym.</p>
+<p>
+4. Otrzymany wielokąt jest wypełniany metodą kontroli parzystości. Polega ona na tym, że dla każdego wiersza pikseli numerujemy jego przecięcie z brzegiem obiektu w zadanej kolejności. Następnie kolorujemy jego wnętrze zaczynając w momencie napotkania nieparzystego przecięcia, a kończąc, jeżeli zostanie osiągnięte parzyste. Istnieją oczywiście przypadki szczególne, gdy punkt przecięcia jest wierzchołkiem rogu wielokąta. Wymaga to niestety dodatkowych obliczen i sprawdzenia drugiego końca przeciętej prostej</p>
+
+
+
+
+
+<h2>Rozpoznawanie wzorca</h2>
+
+<p>Innym podejściem do rozpoznawania gestów jest użycie
+ ukrytych modeli Markowa (UMM, ang. Hidden
+Markov Models, HMM). Są one statystyczną metodą klasyfikacji sekwencji zdarzeń. Matematycznie jest to proces Markowa z ukrytymi stanami. Jako, że wykonywane gesty są
+zdyskretyzowane w czasie, dlatego możemy przyjąc, że UMM są łańcuchem Markowa - łańcuch Markowa jest procesem Markowa z czasem dyskretnym.
+
+</p>
+<p>Załóżmy, że Q &#8800; 0 jest skończonym zbiorem stanów, w którym jest zawarty stan
+początkowy k<sub>0</sub> &#8712; Q. W takim przypadku łańcuch Markowa jest opisany poprzez macierz
+przejśc M = (p<sub>k,l</sub>), gdzie k, l &#8712; Q. Określa ona prawdopodobieństwo p<sub>k,l</sub> przejścia ze
+stanu k do stanu l. Dodatkowo macierz M musi byc stochastyczna.<br />
+
+
+</p>
+<p>
+Opisywany przez łańcuch Markowa układ może w danej chwili t = 0,1,... znajdowac się tylko w jednym ze stanów k &#8712; Q. Interesującą własnością jest to, iż ten układ jest `bez pamięci'. Oznacza to, że kolejny stan zależy tylko i wyłącznie od obecnego stanu k<sub>i</sub>. Każdy inny stan k<sub>i+1</sub> może zostac osiągnięty ze stanu k<sub>i</sub> pod warunkiem, że prawdopodobieństwo p<sub>ki</sub>,<sub>ki+1</sub> jest niezerowe. Wynika z tego, że przejścia nie są zależne od chwili t ani od historii odwiedzonych stanów [k0, k1, ..., ki-1].
+
+</p>
+
+
+
+
+
+
+</body>
+
+</html>
