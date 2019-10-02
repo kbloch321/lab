@@ -1,1 +1,44 @@
 
+html, body  
+	{background: #86c1fd; 
+	 font-size: 1em; 
+	 font-family: Arial;
+	margin: 20px 20px 20px 20px;
+	}
+
+h1 
+	{font-size: 1.4em; 
+	 font-weight: bold;
+	 color:#012e5a;
+	 text-decoration: underline;
+	 text-align: left;
+	 background: #f0f0ff ; 
+	 
+	}
+h2 
+	{font-size: 1.2em;
+	font-weight: bold;
+	 color:#012e5a;
+	 text-decoration: underline;
+	 text-align: left; 
+	 background: #f0f0ff ;
+	}
+h3
+	{font-size: 1em; 
+	 font-weight: bold;
+	 color:#012e5a;
+	 text-decoration: underline;
+	 text-align: left;
+	 background: #f0f0ff ;
+	}
+
+	
+p
+	{
+	text-indent: 20px;
+	
+	}
+
+}
+
+	
